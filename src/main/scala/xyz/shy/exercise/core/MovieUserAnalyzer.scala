@@ -8,6 +8,7 @@ import org.apache.spark.{SparkConf, SparkContext}
   * TODO : 以及看过每部电影的用户年龄和性别分布
   */
 object MovieUserAnalyzer {
+
   def main(args: Array[String]): Unit = {
     // 第一个参数传入运行模式
     var master = if (args.length > 0) args(0) else "local[*]"

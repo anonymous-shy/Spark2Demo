@@ -7,6 +7,7 @@ import org.apache.spark.{SparkConf, SparkContext}
   * 年龄段在“18-24”的男性年轻人，最喜欢看哪10部电影
   */
 object PopularMovieAnalyzer {
+
   def main(args: Array[String]): Unit = {
     // 第一个参数传入运行模式
     var master = if (args.length > 0) args(0) else "local[*]"
