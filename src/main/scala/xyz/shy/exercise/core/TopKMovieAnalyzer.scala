@@ -25,8 +25,8 @@ object TopKMovieAnalyzer {
     }.cache
 
     val topKScoreMostMovie = ratings.map(x => (x._2, (x._3.toInt, 1)))
-      .reduceByKey((v1, v2) => (v1._1 + v1._1, v2._1 + v2._1))
-      .map(x => (x._2._1.toFloat / x._2._2, x._1))
+      .reduceByKey((v1, v2) => (v1._1 + v2._1, v1._2 + v2._2))
+      .map(x => (x._2._1.toFloat / x._2._2.toFloat, x._1))
       .sortByKey(false)
       .take(10)
       .foreach(println)
