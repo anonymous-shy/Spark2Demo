@@ -16,7 +16,7 @@ object MapPartitionsDemo extends App {
   //  val stars = Array("Shy", "Dilraba", "Taylor", "Emma", "AnonYmous")
   //  private val starRdd = sc.parallelize(stars, 2)
   //  final val starsMap = Map("Shy" -> 99, "Dilraba" -> 88, "Taylor" -> 60, "Emma" -> 98, "AnonYmous" -> 1)
-  private val parallelizeRdd = sc.parallelize(Range(1, 101), 4)
+  val parallelizeRdd = sc.parallelize(Range(1, 101), 4)
   /**
     * mapParatitions:
     * 类似 map,不同于 map算子一次只能处理一个partition中的一条数据
@@ -25,7 +25,7 @@ object MapPartitionsDemo extends App {
     * 如果RDD的数据量不是特别大,建议使用 mapParatitions 算子代替 map算子,可以加快处理速度
     * 但如果RDD数据量特别大,不建议使用,可能会内存溢出
     */
-  private val partitionsRdd = parallelizeRdd.mapPartitions(x => {
+  val partitionsRdd = parallelizeRdd.mapPartitions(x => {
     var res = List[Int]()
     var i = 0
     while (x.hasNext) {
