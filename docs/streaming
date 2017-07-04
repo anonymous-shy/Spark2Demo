@@ -1,0 +1,8 @@
+
+集群节点上总共拥有的CPU core :
+首先,一定要大于Spark Streaming App 的Receiver数量,因为一个Receiver独占一个CPU core.
+其次,在spark-submit中,给App分配的CPU core的数量,肯定是 <= 集群的CPU core的数量,但是必须 > App中Receiver数量.
+
+在集群中运行的Spark Streaming App中的executor是一个长时间运行的任务,因此它会独占分配给App的CPU core.
+并且每个executor分配的core,必须 > 1.
+这样才能保证分配到executor上运行的DStream两条线程并行,一条运行Receiver,接收数据.一条处理数据.
